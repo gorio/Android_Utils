@@ -1,6 +1,6 @@
 # Android_Utils
 
-LockType usage
+# LockType usage
 
 int lockType = LockType.getCurrent(getContentResolver());
 
