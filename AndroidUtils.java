@@ -82,7 +82,7 @@ public boolean isRunning(Context ctx) {
         return false;
     }
     
-    Here's an example broadcast receiver:
+    //Here's an example broadcast receiver:
 
 public class SystemUpdateClass extends BroadcastReceiver{
    @Override
@@ -95,7 +95,7 @@ public class SystemUpdateClass extends BroadcastReceiver{
    }
 }
 
-Here's an example code, from within a activity's onCreate:
+//Here's an example code, from within a activity's onCreate:
 
 SystemUpdateClass sysUpdate = new SystemUpdateClass();
 IntentFilter filter = new IntentFilter();
