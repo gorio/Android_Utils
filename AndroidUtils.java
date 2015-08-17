@@ -81,4 +81,24 @@ public boolean isRunning(Context ctx) {
 
         return false;
     }
+    
+    Here's an example broadcast receiver:
+
+public class SystemUpdateClass extends BroadcastReceiver{
+   @Override
+   public void onReceive(Context context, Intent intent){
+      if (intent.getAction().equals("android.settings.SYSTEM_UPDATE_SETTINGS")){
+           Toast.makeText(context, 
+                 "Yup! Received a system update broadcast", 
+                 Toast.LENGTH_SHORT).show();
+      }
+   }
+}
+
+Here's an example code, from within a activity's onCreate:
+
+SystemUpdateClass sysUpdate = new SystemUpdateClass();
+IntentFilter filter = new IntentFilter();
+filter.addAction("android.settings.SYSTEM_UPDATE_SETTINGS");
+registerReceiver(sysUpdate, filter);
 }
