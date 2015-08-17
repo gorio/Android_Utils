@@ -43,5 +43,31 @@ public class AndroidUtils {
       }
       return false;
   }
+  
+  /**
+     * Verify if an App has update
+     * @param package_name
+     * @return boolean
+     */
+    private boolean needUpdate(String package_name) {
+        boolean rc = false;
+        try {
+            String curVersion = this.getPackageManager().getPackageInfo(package_name, 0).versionName;
+            String newVersion = curVersion;
+            newVersion = Jsoup.connect("https://play.google.com/store/apps/details?id=" + package_name + "&hl=en")
+                    .timeout(30000)
+                    .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                    .referrer("http://www.google.com")
+                    .get()
+                    .select("div[itemprop=softwareVersion]")
+                    .first()
+                    .ownText();
+            rc = (curVersion.equals(newVersion)) ? false : true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return rc;
+    }
 
 }
