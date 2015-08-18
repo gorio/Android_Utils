@@ -102,6 +102,8 @@ IntentFilter filter = new IntentFilter();
 filter.addAction("android.settings.SYSTEM_UPDATE_SETTINGS");
 registerReceiver(sysUpdate, filter);
 
+Three points to improve the readability of the image: 1)Resize the image with variable height and width(multiply 0.5 and 1 and 2 with image height and width). 2)Convert the image to Gray scale format(Black and white). 3)Remove the noise pixels and make more clear(Filter the image).
+
 //Resize
   public Bitmap Resize(Bitmap bmp, int newWidth, int newHeight)
         {
