@@ -130,6 +130,36 @@ public class SystemUpdateClass extends BroadcastReceiver{
    }
 }
 
+// Bluetooth
+
+private void pairDevice(BluetoothDevice device) {
+try {
+    if (D)
+    Log.d(TAG, "Start Pairing...");
+
+    waitingForBonding = true;
+
+    Method m = device.getClass()
+        .getMethod("createBond", (Class[]) null);
+    m.invoke(device, (Object[]) null);
+
+    if (D)
+    Log.d(TAG, "Pairing finished.");
+} catch (Exception e) {
+    Log.e(TAG, e.getMessage());
+}
+}
+
+private void unpairDevice(BluetoothDevice device) {
+try {
+    Method m = device.getClass()
+        .getMethod("removeBond", (Class[]) null);
+    m.invoke(device, (Object[]) null);
+} catch (Exception e) {
+    Log.e(TAG, e.getMessage());
+}
+}
+
 //Here's an example code, from within a activity's onCreate:
 
 SystemUpdateClass sysUpdate = new SystemUpdateClass();
