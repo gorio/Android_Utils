@@ -3,9 +3,9 @@ public class AndroidUtils {
    /**
      * Change Locale programmatically
      */
-public void changeLanguage(String language, String country) {
+public static void changeLanguage(Context context, String language, String country) {
         Locale locale = new Locale(language, country);
-        Resources resources = getResources();
+        Resources resources = context.getResources();
         DisplayMetrics displayMetrics = resources.getDisplayMetrics();
         Configuration configuration = resources.getConfiguration();
         configuration.locale = locale;
